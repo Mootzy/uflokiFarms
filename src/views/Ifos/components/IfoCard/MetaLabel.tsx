@@ -1,7 +1,7 @@
-import React from 'react'
-import { Box, BoxProps, Text } from '@pancakeswap-libs/uikit'
+import React from "react";
+import { Box, BoxProps, Text } from "@pancakeswap-libs/uikit";
 
-type MetaLabel = BoxProps
+type MetaLabel = BoxProps;
 
 const MetaLabel: React.FC<BoxProps> = ({ children, ...props }) => {
   return (
@@ -10,7 +10,7 @@ const MetaLabel: React.FC<BoxProps> = ({ children, ...props }) => {
         {children}
       </Text>
     </Box>
-  )
-}
+  );
+};
 
-export default MetaLabel
+export default MetaLabel;

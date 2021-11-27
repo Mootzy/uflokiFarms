@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const ActionColumn = styled.div`
   flex: none;
@@ -11,6 +11,6 @@ const ActionColumn = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
-export default ActionColumn
+export default ActionColumn;

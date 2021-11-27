@@ -1,5 +1,5 @@
-import React from 'react'
-import { Box, Flex, Skeleton } from '@pancakeswap-libs/uikit'
+import React from "react";
+import { Box, Flex, Skeleton } from "@pancakeswap-libs/uikit";
 
 const InactiveSkeleton = () => (
   <>
@@ -16,6 +16,6 @@ const InactiveSkeleton = () => (
     <Skeleton height="48px" mb="24px" />
     <Skeleton height="48px" mt="4px" />
   </>
-)
+);
 
-export default InactiveSkeleton
+export default InactiveSkeleton;

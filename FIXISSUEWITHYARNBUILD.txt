@@ -1,0 +1,1 @@
+to fix the issue with yarn build: revert node to latest lts: nvm use --lts 

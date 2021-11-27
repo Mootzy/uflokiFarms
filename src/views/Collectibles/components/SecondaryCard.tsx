@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const SecondaryCard = styled.div`
   align-items: start;
@@ -7,6 +7,6 @@ const SecondaryCard = styled.div`
   border-radius: 32px;
   display: flex;
   padding: 24px;
-`
+`;
 
-export default SecondaryCard
+export default SecondaryCard;

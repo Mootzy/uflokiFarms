@@ -1,13 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Card, CardHeader, CardBody, CommunityIcon, Heading, PrizeIcon, Text } from '@pancakeswap-libs/uikit'
-import { Team } from 'config/constants/types'
-import useI18n from 'hooks/useI18n'
-import ComingSoon from 'views/Profile/components/ComingSoon'
-import StatBox from 'views/Profile/components/StatBox'
+import React from "react";
+import styled from "styled-components";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CommunityIcon,
+  Heading,
+  PrizeIcon,
+  Text,
+} from "@pancakeswap-libs/uikit";
+import { Team } from "config/constants/types";
+import useI18n from "hooks/useI18n";
+import ComingSoon from "views/Profile/components/ComingSoon";
+import StatBox from "views/Profile/components/StatBox";
 
 interface TeamCardProps {
-  team: Team
+  team: Team;
 }
 
 const Wrapper = styled.div`
@@ -16,7 +24,7 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.mediaQueries.md} {
     padding-top: 24px;
   }
-`
+`;
 
 const Avatar = styled.img`
   border-radius: 50%;
@@ -30,16 +38,16 @@ const Avatar = styled.img`
     margin-top: -24px;
     width: 128px;
   }
-`
+`;
 
 const AvatarWrap = styled.div`
   margin-bottom: 8px;
   text-align: center;
-`
+`;
 
 const StyledCard = styled(Card)`
   overflow: visible;
-`
+`;
 
 const StyledCardHeader = styled(CardHeader)<{ bg: string }>`
   position: relative;
@@ -50,15 +58,15 @@ const StyledCardHeader = styled(CardHeader)<{ bg: string }>`
   border-radius: 32px 32px 0 0;
   padding-top: 0;
   text-align: center;
-`
+`;
 
-const TeamName = styled(Heading).attrs({ as: 'h2' })`
+const TeamName = styled(Heading).attrs({ as: "h2" })`
   font-size: 24px;
 
   ${({ theme }) => theme.mediaQueries.md} {
     font-size: 40px;
   }
-`
+`;
 
 const StatRow = styled.div`
   display: grid;
@@ -71,10 +79,10 @@ const StatRow = styled.div`
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 32px;
   }
-`
+`;
 
 const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
-  const TranslateString = useI18n()
+  const TranslateString = useI18n();
 
   return (
     <Wrapper>
@@ -90,20 +98,26 @@ const TeamCard: React.FC<TeamCardProps> = ({ team }) => {
         </StyledCardHeader>
         <CardBody>
           <StatRow>
-            <StatBox icon={CommunityIcon} title={team.users} subtitle={TranslateString(1048, 'Active Members')} />
+            <StatBox
+              icon={CommunityIcon}
+              title={team.users}
+              subtitle={TranslateString(1048, "Active Members")}
+            />
             <StatBox
               icon={PrizeIcon}
-              title={TranslateString(350, 'Coming Soon')}
-              subtitle={TranslateString(1046, 'Team Points')}
+              title={TranslateString(350, "Coming Soon")}
+              subtitle={TranslateString(1046, "Team Points")}
               isDisabled
             />
           </StatRow>
-          <Heading as="h3">{TranslateString(1044, 'Team Achievements')}</Heading>
+          <Heading as="h3">
+            {TranslateString(1044, "Team Achievements")}
+          </Heading>
           <ComingSoon />
         </CardBody>
       </StyledCard>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default TeamCard
+export default TeamCard;

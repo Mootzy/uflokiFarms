@@ -1,8 +1,8 @@
-import React from 'react'
-import { Box, Progress } from '@pancakeswap-libs/uikit'
+import React from "react";
+import { Box, Progress } from "@pancakeswap-libs/uikit";
 
 interface IfoCardProgressProps {
-  progress: number
+  progress: number;
 }
 
 const IfoCardProgress: React.FC<IfoCardProgressProps> = ({ progress }) => {
@@ -10,7 +10,7 @@ const IfoCardProgress: React.FC<IfoCardProgressProps> = ({ progress }) => {
     <Box mb="16px">
       <Progress primaryStep={progress} />
     </Box>
-  )
-}
+  );
+};
 
-export default IfoCardProgress
+export default IfoCardProgress;

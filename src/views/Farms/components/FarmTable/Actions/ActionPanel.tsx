@@ -1,23 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
-import useI18n from 'hooks/useI18n'
-import { LinkExternal, Text } from '@pancakeswap-libs/uikit'
-import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
-import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { communityFarms } from 'config/constants'
-import { CommunityTag, CoreTag, DualTag } from 'components/Tags'
+import React from "react";
+import styled from "styled-components";
+import useI18n from "hooks/useI18n";
+import { LinkExternal, Text } from "@pancakeswap-libs/uikit";
+import { FarmWithStakedValue } from "views/Farms/components/FarmCard/FarmCard";
+import getLiquidityUrlPathParts from "utils/getLiquidityUrlPathParts";
+import { communityFarms } from "config/constants";
+import { CommunityTag, CoreTag, DualTag } from "components/Tags";
 
-import HarvestAction from './HarvestAction'
-import StakedAction from './StakedAction'
-import Apr, { AprProps } from '../Apr'
-import Multiplier, { MultiplierProps } from '../Multiplier'
-import Liquidity, { LiquidityProps } from '../Liquidity'
+import HarvestAction from "./HarvestAction";
+import StakedAction from "./StakedAction";
+import Apr, { AprProps } from "../Apr";
+import Multiplier, { MultiplierProps } from "../Multiplier";
+import Liquidity, { LiquidityProps } from "../Liquidity";
 
 export interface ActionPanelProps {
-  apr: AprProps
-  multiplier: MultiplierProps
-  liquidity: LiquidityProps
-  details: FarmWithStakedValue
+  apr: AprProps;
+  multiplier: MultiplierProps;
+  liquidity: LiquidityProps;
+  details: FarmWithStakedValue;
 }
 
 const Container = styled.div`
@@ -31,11 +31,11 @@ const Container = styled.div`
     flex-direction: row;
     padding: 16px 32px;
   }
-`
+`;
 
 const StyledLinkExternal = styled(LinkExternal)`
   font-weight: 400;
-`
+`;
 
 const StakeContainer = styled.div`
   color: ${({ theme }) => theme.colors.text};
@@ -46,7 +46,7 @@ const StakeContainer = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     justify-content: flex-start;
   }
-`
+`;
 
 const TagsContainer = styled.div`
   display: flex;
@@ -67,7 +67,7 @@ const TagsContainer = styled.div`
       width: 14px;
     }
   }
-`
+`;
 
 const ActionContainer = styled.div`
   display: flex;
@@ -79,11 +79,11 @@ const ActionContainer = styled.div`
     flex-grow: 1;
     flex-basis: 0;
   }
-`
+`;
 
 const InfoContainer = styled.div`
   min-width: 200px;
-`
+`;
 
 const ValueContainer = styled.div`
   display: block;
@@ -91,37 +91,52 @@ const ValueContainer = styled.div`
   ${({ theme }) => theme.mediaQueries.lg} {
     display: none;
   }
-`
+`;
 
 const ValueWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 4px 0px;
-`
+`;
 
-const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, multiplier, liquidity }) => {
-  const farm = details
+const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
+  details,
+  apr,
+  multiplier,
+  liquidity,
+}) => {
+  const farm = details;
 
-  const TranslateString = useI18n()
-  const { quoteTokenAdresses, tokenAddresses, tokenSymbol, dual } = farm
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
-  const liquidityUrlPathParts = getLiquidityUrlPathParts({ quoteTokenAdresses, tokenAddresses })
-  const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
-  const bsc = `https://bscscan.com/address/${lpAddress}`
-  const info = `https://pancakeswap.info/pair/${lpAddress}`
-  const isCommunityFarm = communityFarms.includes(tokenSymbol)
+  const TranslateString = useI18n();
+  const { quoteTokenAdresses, tokenAddresses, tokenSymbol, dual } = farm;
+  const lpLabel =
+    farm.lpSymbol && farm.lpSymbol.toUpperCase().replace("PANCAKE", "");
+  const liquidityUrlPathParts = getLiquidityUrlPathParts({
+    quoteTokenAdresses,
+    tokenAddresses,
+  });
+  const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID];
+  const bsc = `https://bscscan.com/address/${lpAddress}`;
+  const info = `https://pancakeswap.info/pair/${lpAddress}`;
+  const isCommunityFarm = communityFarms.includes(tokenSymbol);
 
   return (
     <Container>
       <InfoContainer>
         <StakeContainer>
-          <StyledLinkExternal href={`https://dex.babyschrodinger.com/#/add/${liquidityUrlPathParts}`}>
+          <StyledLinkExternal
+            href={`https://dex.babyschrodinger.com/#/add/${liquidityUrlPathParts}`}
+          >
             {TranslateString(999, `Get ${lpLabel}`, { name: lpLabel })}
           </StyledLinkExternal>
         </StakeContainer>
-        <StyledLinkExternal href={bsc}>{TranslateString(999, 'View Contract')}</StyledLinkExternal>
-        <StyledLinkExternal href={info}>{TranslateString(999, 'See Pair Info')}</StyledLinkExternal>
+        <StyledLinkExternal href={bsc}>
+          {TranslateString(999, "View Contract")}
+        </StyledLinkExternal>
+        <StyledLinkExternal href={info}>
+          {TranslateString(999, "See Pair Info")}
+        </StyledLinkExternal>
         <TagsContainer>
           {isCommunityFarm ? <CommunityTag /> : <CoreTag />}
           {dual ? <DualTag /> : null}
@@ -129,15 +144,15 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
       </InfoContainer>
       <ValueContainer>
         <ValueWrapper>
-          <Text>{TranslateString(736, 'APR')}</Text>
+          <Text>{TranslateString(736, "APR")}</Text>
           <Apr {...apr} />
         </ValueWrapper>
         <ValueWrapper>
-          <Text>{TranslateString(999, 'Multiplier')}</Text>
+          <Text>{TranslateString(999, "Multiplier")}</Text>
           <Multiplier {...multiplier} />
         </ValueWrapper>
         <ValueWrapper>
-          <Text>{TranslateString(999, 'Liquidity')}</Text>
+          <Text>{TranslateString(999, "Liquidity")}</Text>
           <Liquidity {...liquidity} />
         </ValueWrapper>
       </ValueContainer>
@@ -146,7 +161,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
         <StakedAction {...farm} />
       </ActionContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default ActionPanel
+export default ActionPanel;

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import {
   ChevronRightIcon,
   Button as UIKitButton,
@@ -7,16 +7,16 @@ import {
   ChevronDownIcon,
   Box,
   Flex,
-} from '@pancakeswap-libs/uikit'
-import useI18n from 'hooks/useI18n'
+} from "@pancakeswap-libs/uikit";
+import useI18n from "hooks/useI18n";
 
 interface ApproveConfirmButtonsProps {
-  isApproveDisabled: boolean
-  isApproving: boolean
-  isConfirming: boolean
-  isConfirmDisabled: boolean
-  onApprove: () => void
-  onConfirm: () => void
+  isApproveDisabled: boolean;
+  isApproving: boolean;
+  isConfirming: boolean;
+  isConfirmDisabled: boolean;
+  onApprove: () => void;
+  onConfirm: () => void;
 }
 
 const StyledApprovConfirmButtons = styled.div`
@@ -28,7 +28,7 @@ const StyledApprovConfirmButtons = styled.div`
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: 1fr 24px 1fr;
   }
-`
+`;
 
 const Button = styled(UIKitButton)`
   width: 100%;
@@ -36,9 +36,9 @@ const Button = styled(UIKitButton)`
   ${({ theme }) => theme.mediaQueries.md} {
     min-width: 160px;
   }
-`
+`;
 
-const iconAttrs = { width: '24px', color: 'textDisabled' }
+const iconAttrs = { width: "24px", color: "textDisabled" };
 
 const ChevronRight = styled(ChevronRightIcon).attrs(iconAttrs)`
   display: none;
@@ -46,7 +46,7 @@ const ChevronRight = styled(ChevronRightIcon).attrs(iconAttrs)`
   ${({ theme }) => theme.mediaQueries.md} {
     display: block;
   }
-`
+`;
 
 const ChevronBottom = styled(ChevronDownIcon).attrs(iconAttrs)`
   display: block;
@@ -54,9 +54,9 @@ const ChevronBottom = styled(ChevronDownIcon).attrs(iconAttrs)`
   ${({ theme }) => theme.mediaQueries.md} {
     display: none;
   }
-`
+`;
 
-const spinnerIcon = <AutoRenewIcon spin color="currentColor" />
+const spinnerIcon = <AutoRenewIcon spin color="currentColor" />;
 
 const ApproveConfirmButtons: React.FC<ApproveConfirmButtonsProps> = ({
   isApproveDisabled,
@@ -66,7 +66,7 @@ const ApproveConfirmButtons: React.FC<ApproveConfirmButtonsProps> = ({
   onApprove,
   onConfirm,
 }) => {
-  const TranslateString = useI18n()
+  const TranslateString = useI18n();
 
   return (
     <StyledApprovConfirmButtons>
@@ -77,7 +77,9 @@ const ApproveConfirmButtons: React.FC<ApproveConfirmButtonsProps> = ({
           endIcon={isApproving ? spinnerIcon : undefined}
           isLoading={isApproving}
         >
-          {isApproving ? TranslateString(800, 'Approving') : TranslateString(564, 'Approve')}
+          {isApproving
+            ? TranslateString(800, "Approving")
+            : TranslateString(564, "Approve")}
         </Button>
       </Box>
       <Flex justifyContent="center">
@@ -91,11 +93,13 @@ const ApproveConfirmButtons: React.FC<ApproveConfirmButtonsProps> = ({
           isLoading={isConfirming}
           endIcon={isConfirming ? spinnerIcon : undefined}
         >
-          {isConfirming ? TranslateString(802, 'Confirming') : TranslateString(464, 'Confirm')}
+          {isConfirming
+            ? TranslateString(802, "Confirming")
+            : TranslateString(464, "Confirm")}
         </Button>
       </Box>
     </StyledApprovConfirmButtons>
-  )
-}
+  );
+};
 
-export default ApproveConfirmButtons
+export default ApproveConfirmButtons;

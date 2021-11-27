@@ -1,1 +1,1 @@
-export { default } from './TicketInput'
+export { default } from "./TicketInput";

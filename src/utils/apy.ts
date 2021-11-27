@@ -1,5 +1,5 @@
-import BigNumber from 'bignumber.js'
-import { BLOCKS_PER_YEAR } from 'config'
+import BigNumber from "bignumber.js";
+import { BLOCKS_PER_YEAR } from "config";
 
 /**
  * Get the APY value in %
@@ -13,12 +13,16 @@ export const getPoolApy = (
   stakingTokenPrice: number,
   rewardTokenPrice: number,
   totalStaked: number,
-  tokenPerBlock: number,
+  tokenPerBlock: number
 ) => {
-  const totalRewardPricePerYear = new BigNumber(rewardTokenPrice).times(tokenPerBlock).times(BLOCKS_PER_YEAR)
-  const totalStakingTokenInPool = new BigNumber(stakingTokenPrice).times(totalStaked)
-  const apy = totalRewardPricePerYear.div(totalStakingTokenInPool).times(100)
-  return apy.isNaN() || !apy.isFinite() ? null : apy.toNumber()
-}
+  const totalRewardPricePerYear = new BigNumber(rewardTokenPrice)
+    .times(tokenPerBlock)
+    .times(BLOCKS_PER_YEAR);
+  const totalStakingTokenInPool = new BigNumber(stakingTokenPrice).times(
+    totalStaked
+  );
+  const apy = totalRewardPricePerYear.div(totalStakingTokenInPool).times(100);
+  return apy.isNaN() || !apy.isFinite() ? null : apy.toNumber();
+};
 
-export default null
+export default null;

@@ -1,20 +1,25 @@
-import { request, gql } from 'graphql-request'
-import { campaignMap } from 'config/constants/campaigns'
-import { Achievement } from 'state/types'
-import { getAchievementTitle, getAchievementDescription } from 'utils/achievements'
+import { request, gql } from "graphql-request";
+import { campaignMap } from "config/constants/campaigns";
+import { Achievement } from "state/types";
+import {
+  getAchievementTitle,
+  getAchievementDescription,
+} from "utils/achievements";
 
 interface UserPointIncreaseEvent {
-  campaignId: string
-  id: string // wallet address
-  points: string
+  campaignId: string;
+  id: string; // wallet address
+  points: string;
 }
 
-const profileSubgraphApi = process.env.REACT_APP_SUBGRAPH_PROFILE
+const profileSubgraphApi = process.env.REACT_APP_SUBGRAPH_PROFILE;
 
 /**
  * Gets all user point increase events on the profile filtered by wallet address
  */
-export const getUserPointIncreaseEvents = async (account: string): Promise<UserPointIncreaseEvent[]> => {
+export const getUserPointIncreaseEvents = async (
+  account: string
+): Promise<UserPointIncreaseEvent[]> => {
   try {
     const data = await request(
       profileSubgraphApi,
@@ -28,26 +33,28 @@ export const getUserPointIncreaseEvents = async (account: string): Promise<UserP
             }
           }
         }
-      `,
-    )
-    return data.user.points
+      `
+    );
+    return data.user.points;
   } catch (error) {
-    return null
+    return null;
   }
-}
+};
 
 /**
  * Gets all user point increase events and adds achievement meta
  */
-export const getAchievements = async (account: string): Promise<Achievement[]> => {
-  const pointIncreaseEvents = await getUserPointIncreaseEvents(account)
+export const getAchievements = async (
+  account: string
+): Promise<Achievement[]> => {
+  const pointIncreaseEvents = await getUserPointIncreaseEvents(account);
 
   if (!pointIncreaseEvents) {
-    return []
+    return [];
   }
 
   return pointIncreaseEvents.reduce((accum, userPoint) => {
-    const campaignMeta = campaignMap.get(userPoint.campaignId)
+    const campaignMeta = campaignMap.get(userPoint.campaignId);
 
     return [
       ...accum,
@@ -60,6 +67,6 @@ export const getAchievements = async (account: string): Promise<Achievement[]> =
         badge: campaignMeta.badge,
         points: Number(userPoint.points),
       },
-    ]
-  }, [])
-}
+    ];
+  }, []);
+};

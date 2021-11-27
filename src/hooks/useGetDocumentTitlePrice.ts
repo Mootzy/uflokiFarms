@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
-import { usePriceCakeBusd } from 'state/hooks'
+import { useEffect } from "react";
+import { usePriceCakeBusd } from "state/hooks";
 
 const useGetDocumentTitlePrice = () => {
-  const cakePriceUsd = usePriceCakeBusd()
+  const cakePriceUsd = usePriceCakeBusd();
   useEffect(() => {
-    console.log("title")
-  })
-}
-export default useGetDocumentTitlePrice
+    console.log("title");
+  });
+};
+export default useGetDocumentTitlePrice;

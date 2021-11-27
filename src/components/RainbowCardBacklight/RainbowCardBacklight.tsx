@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from "styled-components";
 
 export const RainbowLight = keyframes`
 	0% {
@@ -10,7 +10,7 @@ export const RainbowLight = keyframes`
 	100% {
 		background-position: 0% 50%;
 	}
-`
+`;
 
 const RainbowCardBacklight = styled.div`
   background: linear-gradient(
@@ -37,7 +37,6 @@ const RainbowCardBacklight = styled.div`
   bottom: -2px;
   left: -2px;
   z-index: -1;
-`
+`;
 
 export default RainbowCardBacklight;
-

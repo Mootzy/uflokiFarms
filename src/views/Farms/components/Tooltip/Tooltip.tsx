@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 export interface TooltipProps {
-  content: React.ReactNode
+  content: React.ReactNode;
 }
 
 const TooltipContent = styled.div`
@@ -22,7 +22,7 @@ const TooltipContent = styled.div`
   max-width: 246px;
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     width: 0;
     height: 0;
@@ -34,7 +34,7 @@ const TooltipContent = styled.div`
     transform: translate(-34px, 9px);
     right: 0;
   }
-`
+`;
 
 const Container = styled.div`
   position: relative;
@@ -42,15 +42,18 @@ const Container = styled.div`
   &:hover ${TooltipContent}, &:focus-within ${TooltipContent} {
     display: block;
   }
-`
+`;
 
-const Tooltip: React.FunctionComponent<TooltipProps> = ({ content, children }) => {
+const Tooltip: React.FunctionComponent<TooltipProps> = ({
+  content,
+  children,
+}) => {
   return (
     <Container>
       {children}
       <TooltipContent>{content}</TooltipContent>
     </Container>
-  )
-}
+  );
+};
 
-export default Tooltip
+export default Tooltip;

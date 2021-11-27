@@ -1,10 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import orderBy from 'lodash/orderBy'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon } from '@pancakeswap-libs/uikit'
-import { NavLink } from 'react-router-dom'
-import pools from 'config/constants/pools'
-import { Pool } from 'state/types'
+import React from "react";
+import styled from "styled-components";
+import orderBy from "lodash/orderBy";
+import {
+  Heading,
+  Card,
+  CardBody,
+  Flex,
+  ArrowForwardIcon,
+} from "@pancakeswap-libs/uikit";
+import { NavLink } from "react-router-dom";
+import pools from "config/constants/pools";
+import { Pool } from "state/types";
 
 const StyledFarmStakingCard = styled(Card)`
   background: linear-gradient(#53dee9, #7645d9);
@@ -15,15 +21,23 @@ const StyledFarmStakingCard = styled(Card)`
     margin: 0;
     max-width: none;
   }
-`
-const CardMidContent = styled(Heading).attrs({ size: 'xl' })`
+`;
+const CardMidContent = styled(Heading).attrs({ size: "xl" })`
   line-height: 44px;
-`
+`;
 const EarnAssetCard = () => {
-  const activeNonCakePools = pools.filter((pool) => !pool.isFinished && !pool.tokenName.includes('CAKE'))
-  const latestPools: Pool[] = orderBy(activeNonCakePools, ['sortOrder', 'pid'], ['desc', 'desc']).slice(0, 3)
+  const activeNonCakePools = pools.filter(
+    (pool) => !pool.isFinished && !pool.tokenName.includes("CAKE")
+  );
+  const latestPools: Pool[] = orderBy(
+    activeNonCakePools,
+    ["sortOrder", "pid"],
+    ["desc", "desc"]
+  ).slice(0, 3);
   // Always include CAKE
-  const assets = ['Litter', ...latestPools.map((pool) => pool.tokenName)].join(', ')
+  const assets = ["Litter", ...latestPools.map((pool) => pool.tokenName)].join(
+    ", "
+  );
 
   return (
     <StyledFarmStakingCard>
@@ -42,7 +56,7 @@ const EarnAssetCard = () => {
         </Flex>
       </CardBody>
     </StyledFarmStakingCard>
-  )
-}
+  );
+};
 
-export default EarnAssetCard
+export default EarnAssetCard;

@@ -1,58 +1,66 @@
-import React, { useContext, useMemo } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import React, { useContext, useMemo } from "react";
+import styled, { ThemeContext } from "styled-components";
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 interface ButtonProps {
-  children?: React.ReactNode
-  disabled?: boolean
-  href?: string
-  onClick?: () => void
-  size?: 'sm' | 'md' | 'lg'
-  text?: string
-  to?: string
-  variant?: 'default' | 'secondary' | 'tertiary'
+  children?: React.ReactNode;
+  disabled?: boolean;
+  href?: string;
+  onClick?: () => void;
+  size?: "sm" | "md" | "lg";
+  text?: string;
+  to?: string;
+  variant?: "default" | "secondary" | "tertiary";
 }
 
-const Button: React.FC<ButtonProps> = ({ children, disabled, href, onClick, size, text, to }) => {
-  const { colors, spacing } = useContext(ThemeContext)
-  const buttonColor = colors.background
+const Button: React.FC<ButtonProps> = ({
+  children,
+  disabled,
+  href,
+  onClick,
+  size,
+  text,
+  to,
+}) => {
+  const { colors, spacing } = useContext(ThemeContext);
+  const buttonColor = colors.background;
 
-  let boxShadow: string
-  let buttonSize: number
-  let buttonPadding: number
-  let fontSize: number
+  let boxShadow: string;
+  let buttonSize: number;
+  let buttonPadding: number;
+  let fontSize: number;
   switch (size) {
-    case 'sm':
-      buttonPadding = spacing[3]
-      buttonSize = 36
-      fontSize = 14
-      break
-    case 'lg':
-      buttonPadding = spacing[4]
-      buttonSize = 72
-      fontSize = 16
-      break
-    case 'md':
+    case "sm":
+      buttonPadding = spacing[3];
+      buttonSize = 36;
+      fontSize = 14;
+      break;
+    case "lg":
+      buttonPadding = spacing[4];
+      buttonSize = 72;
+      fontSize = 16;
+      break;
+    case "md":
     default:
-      buttonPadding = spacing[4]
-      buttonSize = 56
-      fontSize = 16
+      buttonPadding = spacing[4];
+      buttonSize = 56;
+      fontSize = 16;
   }
 
   const ButtonChild = useMemo(() => {
     if (to) {
-      return <StyledLink to={to}>{text}</StyledLink>
+      return <StyledLink to={to}>{text}</StyledLink>;
     }
     if (href) {
       return (
         <StyledExternalLink href={href} target="__blank">
           {text}
         </StyledExternalLink>
-      )
+      );
     }
-    return text
-  }, [href, text, to])
+    return text;
+  }, [href, text, to]);
 
   return (
     <StyledButton
@@ -67,21 +75,22 @@ const Button: React.FC<ButtonProps> = ({ children, disabled, href, onClick, size
       {children}
       {ButtonChild}
     </StyledButton>
-  )
-}
+  );
+};
 
 interface StyledButtonProps {
-  boxShadow: string
-  color: string
-  disabled?: boolean
-  fontSize: number
-  padding: number
-  size: number
+  boxShadow: string;
+  color: string;
+  disabled?: boolean;
+  fontSize: number;
+  padding: number;
+  size: number;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
-  background: ${(props) => (!props.disabled ? props.theme.card.background : `#ddd`)};
+  background: ${(props) =>
+    !props.disabled ? props.theme.card.background : `#ddd`};
   border: 0;
   border-radius: 12px;
   color: ${(props) => (!props.disabled ? `#32cad7` : `#acaaaf`)};
@@ -94,14 +103,14 @@ const StyledButton = styled.button<StyledButtonProps>`
   outline: none;
   padding-left: ${(props) => props.padding}px;
   padding-right: ${(props) => props.padding}px;
-  pointer-events: ${(props) => (!props.disabled ? undefined : 'none')};
+  pointer-events: ${(props) => (!props.disabled ? undefined : "none")};
   width: 100%;
   border: 2px solid ${(props) => (!props.disabled ? `#33cbd7` : `#eee`)};
   width: 100px;
   height: 30px;
   font-size: 14px;
   padding: 0px;
-`
+`;
 
 const StyledLink = styled(Link)`
   align-items: center;
@@ -113,7 +122,7 @@ const StyledLink = styled(Link)`
   margin: 0 ${(props) => -props.theme.spacing[4]}px;
   padding: 0 ${(props) => props.theme.spacing[4]}px;
   text-decoration: none;
-`
+`;
 
 const StyledExternalLink = styled.a`
   align-items: center;
@@ -125,6 +134,6 @@ const StyledExternalLink = styled.a`
   margin: 0 ${(props) => -props.theme.spacing[4]}px;
   padding: 0 ${(props) => props.theme.spacing[4]}px;
   text-decoration: none;
-`
+`;
 
-export default Button
+export default Button;

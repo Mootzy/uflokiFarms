@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Card, CardBody } from '@pancakeswap-libs/uikit'
-import { getBalanceNumber } from 'utils/formatBalance'
-import { useTotalClaim } from 'hooks/useTickets'
-import PrizesWonContent from './PrizesWonContent'
-import NoPrizesContent from './NoPrizesContent'
+import React from "react";
+import styled from "styled-components";
+import { Card, CardBody } from "@pancakeswap-libs/uikit";
+import { getBalanceNumber } from "utils/formatBalance";
+import { useTotalClaim } from "hooks/useTickets";
+import PrizesWonContent from "./PrizesWonContent";
+import NoPrizesContent from "./NoPrizesContent";
 
 const StyledCard = styled(Card)`
   ${(props) =>
@@ -24,19 +24,19 @@ const StyledCard = styled(Card)`
         }
         `
       : ``}
-`
+`;
 
 const YourPrizesCard: React.FC = () => {
-  const { claimAmount } = useTotalClaim()
+  const { claimAmount } = useTotalClaim();
 
-  const winnings = getBalanceNumber(claimAmount)
-  const isAWin = winnings > 0
+  const winnings = getBalanceNumber(claimAmount);
+  const isAWin = winnings > 0;
 
   return (
     <StyledCard isDisabled={!isAWin} isActive={isAWin}>
       <CardBody>{isAWin ? <PrizesWonContent /> : <NoPrizesContent />}</CardBody>
     </StyledCard>
-  )
-}
+  );
+};
 
-export default YourPrizesCard
+export default YourPrizesCard;

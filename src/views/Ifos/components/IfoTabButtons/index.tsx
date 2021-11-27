@@ -1,17 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useRouteMatch, Link } from 'react-router-dom'
-import { ButtonMenu, ButtonMenuItem } from '@pancakeswap-libs/uikit'
+import React from "react";
+import styled from "styled-components";
+import { useRouteMatch, Link } from "react-router-dom";
+import { ButtonMenu, ButtonMenuItem } from "@pancakeswap-libs/uikit";
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 39px;
-`
+`;
 
 const IfoTabButtons = () => {
-  const { url, isExact } = useRouteMatch()
+  const { url, isExact } = useRouteMatch();
 
   return (
     <Wrapper>
@@ -24,7 +24,7 @@ const IfoTabButtons = () => {
         </ButtonMenuItem>
       </ButtonMenu>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default IfoTabButtons
+export default IfoTabButtons;

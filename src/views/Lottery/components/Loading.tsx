@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-const Loading: React.FC = () => <StyledLoading />
+const Loading: React.FC = () => <StyledLoading />;
 
 const StyledLoading = styled.div`
   border: 8px solid #f3f3f3;
@@ -29,6 +29,6 @@ const StyledLoading = styled.div`
       transform: rotate(360deg);
     }
   }
-`
+`;
 
-export default Loading
+export default Loading;

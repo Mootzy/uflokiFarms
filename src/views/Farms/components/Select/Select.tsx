@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react'
-import styled, { css } from 'styled-components'
-import { ArrowDropDownIcon, Text } from '@pancakeswap-libs/uikit'
+import React, { useState, useRef, useEffect } from "react";
+import styled, { css } from "styled-components";
+import { ArrowDropDownIcon, Text } from "@pancakeswap-libs/uikit";
 
 const DropDownHeader = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ const DropDownHeader = styled.div`
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.input};
   transition: border-radius 0.15s;
-`
+`;
 
 const DropDownListContainer = styled.div`
   min-width: 136px;
@@ -31,9 +31,13 @@ const DropDownListContainer = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     min-width: 168px;
   }
-`
+`;
 
-const DropDownContainer = styled.div<{ isOpen: boolean; width: number; height: number }>`
+const DropDownContainer = styled.div<{
+  isOpen: boolean;
+  width: number;
+  height: number;
+}>`
   cursor: pointer;
   width: ${({ width }) => width}px;
   position: relative;
@@ -72,14 +76,14 @@ const DropDownContainer = styled.div<{ isOpen: boolean; width: number; height: n
     top: 50%;
     transform: translateY(-50%);
   }
-`
+`;
 
 const DropDownList = styled.ul`
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   z-index: ${({ theme }) => theme.zIndices.dropdown};
-`
+`;
 
 const ListItem = styled.li`
   list-style: none;
@@ -87,42 +91,45 @@ const ListItem = styled.li`
   &:hover {
     background: ${({ theme }) => theme.colors.inputSecondary};
   }
-`
+`;
 
 export interface SelectProps {
-  options: OptionProps[]
-  onChange?: (option: OptionProps) => void
+  options: OptionProps[];
+  onChange?: (option: OptionProps) => void;
 }
 
 export interface OptionProps {
-  label: string
-  value: any
+  label: string;
+  value: any;
 }
 
-const Select: React.FunctionComponent<SelectProps> = ({ options, onChange }) => {
-  const containerRef = useRef(null)
-  const dropdownRef = useRef(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const [selectedOption, setSelectedOption] = useState(options[0])
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 })
+const Select: React.FunctionComponent<SelectProps> = ({
+  options,
+  onChange,
+}) => {
+  const containerRef = useRef(null);
+  const dropdownRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
-  const toggling = () => setIsOpen(!isOpen)
+  const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (option: OptionProps) => () => {
-    setSelectedOption(option)
-    setIsOpen(false)
+    setSelectedOption(option);
+    setIsOpen(false);
 
     if (onChange) {
-      onChange(option)
+      onChange(option);
     }
-  }
+  };
 
   useEffect(() => {
     setContainerSize({
       width: dropdownRef.current.offsetWidth, // Consider border
       height: dropdownRef.current.offsetHeight,
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <DropDownContainer isOpen={isOpen} ref={containerRef} {...containerSize}>
@@ -139,12 +146,12 @@ const Select: React.FunctionComponent<SelectProps> = ({ options, onChange }) => 
               <ListItem onClick={onOptionClicked(option)} key={option.label}>
                 <Text>{option.label}</Text>
               </ListItem>
-            ) : null,
+            ) : null
           )}
         </DropDownList>
       </DropDownListContainer>
     </DropDownContainer>
-  )
-}
+  );
+};
 
-export default Select
+export default Select;

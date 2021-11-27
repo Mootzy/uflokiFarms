@@ -1,8 +1,8 @@
-import React from 'react'
-import Page from 'components/layout/Page'
-import Header from './Header'
-import ProfileCreationProvider from './contexts/ProfileCreationProvider'
-import Steps from './Steps'
+import React from "react";
+import Page from "components/layout/Page";
+import Header from "./Header";
+import ProfileCreationProvider from "./contexts/ProfileCreationProvider";
+import Steps from "./Steps";
 
 const ProfileCreation = () => (
   <ProfileCreationProvider>
@@ -11,6 +11,6 @@ const ProfileCreation = () => (
       <Steps />
     </Page>
   </ProfileCreationProvider>
-)
+);
 
-export default ProfileCreation
+export default ProfileCreation;

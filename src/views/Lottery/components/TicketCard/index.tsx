@@ -1,15 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Card, CardBody, TicketRound, Text, Heading } from '@pancakeswap-libs/uikit'
-import useI18n from 'hooks/useI18n'
-import useGetLotteryHasDrawn from 'hooks/useGetLotteryHasDrawn'
-import useTickets from 'hooks/useTickets'
-import { useCurrentTime } from 'hooks/useTimer'
-import TicketActions from './TicketActions'
-import { getTicketSaleTime } from '../../helpers/CountdownHelpers'
+import React from "react";
+import styled from "styled-components";
+import {
+  Card,
+  CardBody,
+  TicketRound,
+  Text,
+  Heading,
+} from "@pancakeswap-libs/uikit";
+import useI18n from "hooks/useI18n";
+import useGetLotteryHasDrawn from "hooks/useGetLotteryHasDrawn";
+import useTickets from "hooks/useTickets";
+import { useCurrentTime } from "hooks/useTimer";
+import TicketActions from "./TicketActions";
+import { getTicketSaleTime } from "../../helpers/CountdownHelpers";
 
 interface CardProps {
-  isSecondCard?: boolean
+  isSecondCard?: boolean;
 }
 
 const StyledCard = styled(Card)<CardProps>`
@@ -27,12 +33,12 @@ const StyledCard = styled(Card)<CardProps>`
         }
         `
       : ``}
-`
+`;
 
 const CardHeader = styled.div`
   align-items: center;
   display: flex;
-`
+`;
 
 const IconWrapper = styled.div`
   margin-right: 16px;
@@ -40,22 +46,23 @@ const IconWrapper = styled.div`
     width: 48px;
     height: 48px;
   }
-`
+`;
 
 const TicketCountWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const TicketCard: React.FC<CardProps> = ({ isSecondCard = false }) => {
-  const TranslateString = useI18n()
-  const lotteryHasDrawn = useGetLotteryHasDrawn()
+  const TranslateString = useI18n();
+  const lotteryHasDrawn = useGetLotteryHasDrawn();
 
-  const tickets = useTickets()
-  const ticketsLength = tickets.length
+  const tickets = useTickets();
+  const ticketsLength = tickets.length;
 
-  const currentMillis = useCurrentTime()
-  const timeUntilTicketSale = lotteryHasDrawn && getTicketSaleTime(currentMillis)
+  const currentMillis = useCurrentTime();
+  const timeUntilTicketSale =
+    lotteryHasDrawn && getTicketSaleTime(currentMillis);
 
   return (
     <StyledCard isSecondCard={isSecondCard}>
@@ -67,14 +74,14 @@ const TicketCard: React.FC<CardProps> = ({ isSecondCard = false }) => {
           {lotteryHasDrawn ? (
             <TicketCountWrapper>
               <Text fontSize="14px" color="textSubtle">
-                {TranslateString(870, 'Until ticket sale:')}
+                {TranslateString(870, "Until ticket sale:")}
               </Text>
               <Heading size="lg">{timeUntilTicketSale}</Heading>
             </TicketCountWrapper>
           ) : (
             <TicketCountWrapper>
               <Text fontSize="14px" color="textSubtle">
-                {TranslateString(724, 'Your tickets for this round')}
+                {TranslateString(724, "Your tickets for this round")}
               </Text>
               <Heading size="lg">{ticketsLength}</Heading>
             </TicketCountWrapper>
@@ -83,7 +90,7 @@ const TicketCard: React.FC<CardProps> = ({ isSecondCard = false }) => {
         <TicketActions />
       </CardBody>
     </StyledCard>
-  )
-}
+  );
+};
 
-export default TicketCard
+export default TicketCard;

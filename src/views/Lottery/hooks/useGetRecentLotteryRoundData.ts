@@ -1,40 +1,40 @@
-import { useContext, useEffect, useState } from 'react'
-import PastLotteryDataContext from 'contexts/PastLotteryDataContext'
-import getLotteryRoundData, { DataResponse } from 'utils/getLotteryRoundData'
+import { useContext, useEffect, useState } from "react";
+import PastLotteryDataContext from "contexts/PastLotteryDataContext";
+import getLotteryRoundData, { DataResponse } from "utils/getLotteryRoundData";
 
 type GetRecentLotteryRoundDataReturn = {
-  isLoading: boolean
-  data: DataResponse
-  mostRecentLotteryNumber: number
-  error: any
-}
+  isLoading: boolean;
+  data: DataResponse;
+  mostRecentLotteryNumber: number;
+  error: any;
+};
 
 const useGetRecentLotteryRoundData = (): GetRecentLotteryRoundDataReturn => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
-  const { mostRecentLotteryNumber } = useContext(PastLotteryDataContext)
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const { mostRecentLotteryNumber } = useContext(PastLotteryDataContext);
 
   useEffect(() => {
     const fetchRecentLotteryData = async () => {
       try {
-        setIsLoading(true)
+        setIsLoading(true);
 
-        const roundData = await getLotteryRoundData(mostRecentLotteryNumber)
-        setData(roundData)
+        const roundData = await getLotteryRoundData(mostRecentLotteryNumber);
+        setData(roundData);
       } catch (err) {
-        setError(err)
+        setError(err);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
     if (mostRecentLotteryNumber > 0) {
-      fetchRecentLotteryData()
+      fetchRecentLotteryData();
     }
-  }, [mostRecentLotteryNumber, setData, setIsLoading, setError])
+  }, [mostRecentLotteryNumber, setData, setIsLoading, setError]);
 
-  return { isLoading, data, mostRecentLotteryNumber, error }
-}
+  return { isLoading, data, mostRecentLotteryNumber, error };
+};
 
-export default useGetRecentLotteryRoundData
+export default useGetRecentLotteryRoundData;

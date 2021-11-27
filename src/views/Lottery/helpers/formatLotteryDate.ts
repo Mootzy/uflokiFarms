@@ -1,15 +1,15 @@
 const formatLotteryDate = (lotteryDate: string) => {
   if (!lotteryDate) {
-    return {}
+    return {};
   }
 
-  const date = new Date(lotteryDate)
+  const date = new Date(lotteryDate);
 
-  const dateString = date.toDateString()
-  const hours = date.getUTCHours()
-  const monthAndDay = dateString.split(' ').splice(1, 2).join(' ')
+  const dateString = date.toDateString();
+  const hours = date.getUTCHours();
+  const monthAndDay = dateString.split(" ").splice(1, 2).join(" ");
 
-  return { hours, monthAndDay }
-}
+  return { hours, monthAndDay };
+};
 
-export default formatLotteryDate
+export default formatLotteryDate;

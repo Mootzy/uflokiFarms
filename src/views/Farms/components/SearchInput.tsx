@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react'
-import { Input } from '@pancakeswap-libs/uikit'
-import styled from 'styled-components'
+import React, { useState, useRef } from "react";
+import { Input } from "@pancakeswap-libs/uikit";
+import styled from "styled-components";
 
 const StyledInput = styled(Input)`
   border-radius: 16px;
   margin-left: auto;
-`
+`;
 
 const InputWrapper = styled.div`
   position: relative;
@@ -13,18 +13,18 @@ const InputWrapper = styled.div`
     width: 234px;
     display: block;
   }
-`
+`;
 
-const Container = styled.div<{ toggled: boolean }>``
+const Container = styled.div<{ toggled: boolean }>``;
 
 interface Props {
-  value: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchInput: React.FC<Props> = ({ value, onChange }) => {
-  const [toggled, setToggled] = useState(false)
-  const inputEl = useRef(null)
+  const [toggled, setToggled] = useState(false);
+  const inputEl = useRef(null);
 
   return (
     <Container toggled={toggled}>
@@ -38,7 +38,7 @@ const SearchInput: React.FC<Props> = ({ value, onChange }) => {
         />
       </InputWrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default SearchInput
+export default SearchInput;

@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Text } from '@pancakeswap-libs/uikit'
-import { Nft } from 'config/constants/types'
+import React from "react";
+import styled from "styled-components";
+import { Text } from "@pancakeswap-libs/uikit";
+import { Nft } from "config/constants/types";
 
 interface CollectibleCardProps {
-  nft: Nft
+  nft: Nft;
 }
 
 const PreviewImage = styled.img`
   border-radius: 4px;
   margin-bottom: 8px;
-`
+`;
 
 const CollectibleCard: React.FC<CollectibleCardProps> = ({ nft }) => {
   return (
@@ -23,7 +23,7 @@ const CollectibleCard: React.FC<CollectibleCardProps> = ({ nft }) => {
         {nft.description}
       </Text>
     </div>
-  )
-}
+  );
+};
 
-export default CollectibleCard
+export default CollectibleCard;

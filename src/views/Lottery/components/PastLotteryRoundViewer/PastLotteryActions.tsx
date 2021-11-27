@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Button, LinkExternal, useModal } from '@pancakeswap-libs/uikit'
-import useI18n from 'hooks/useI18n'
-import { useWeb3React } from '@web3-react/core'
-import useTickets from 'hooks/useTickets'
-import UnlockButton from 'components/UnlockButton'
-import MyTicketsModal from '../TicketCard/UserTicketsModal'
+import React from "react";
+import styled from "styled-components";
+import { Button, LinkExternal, useModal } from "@pancakeswap-libs/uikit";
+import useI18n from "hooks/useI18n";
+import { useWeb3React } from "@web3-react/core";
+import useTickets from "hooks/useTickets";
+import UnlockButton from "components/UnlockButton";
+import MyTicketsModal from "../TicketCard/UserTicketsModal";
 
 const Wrapper = styled.div`
   align-items: center;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     flex: 1;
     width: 100%;
   }
-`
+`;
 
 const ExternalLinkWrap = styled(LinkExternal)`
   align-items: center;
@@ -26,35 +26,46 @@ const ExternalLinkWrap = styled(LinkExternal)`
   justify-content: center;
   text-decoration: none;
   width: 100%;
-`
+`;
 
-const TicketCard: React.FC<{ contractLink?: string; lotteryNumber?: number }> = ({ contractLink, lotteryNumber }) => {
-  const TranslateString = useI18n()
-  const tickets = useTickets(lotteryNumber)
-  const ticketsLength = tickets.length
-  const [onPresentMyTickets] = useModal(<MyTicketsModal myTicketNumbers={tickets} from="buy" />)
-  const { account } = useWeb3React()
+const TicketCard: React.FC<{
+  contractLink?: string;
+  lotteryNumber?: number;
+}> = ({ contractLink, lotteryNumber }) => {
+  const TranslateString = useI18n();
+  const tickets = useTickets(lotteryNumber);
+  const ticketsLength = tickets.length;
+  const [onPresentMyTickets] = useModal(
+    <MyTicketsModal myTicketNumbers={tickets} from="buy" />
+  );
+  const { account } = useWeb3React();
 
   if (!account) {
     return (
       <Wrapper>
         <UnlockButton />
       </Wrapper>
-    )
+    );
   }
 
   return (
     <Wrapper>
       <div>
-        <Button disabled={ticketsLength === 0} onClick={onPresentMyTickets} width="100%">
-          {TranslateString(432, 'View your tickets')}
+        <Button
+          disabled={ticketsLength === 0}
+          onClick={onPresentMyTickets}
+          width="100%"
+        >
+          {TranslateString(432, "View your tickets")}
         </Button>
       </div>
       <div>
-        <ExternalLinkWrap href={contractLink}>{TranslateString(356, 'View on BscScan')}</ExternalLinkWrap>
+        <ExternalLinkWrap href={contractLink}>
+          {TranslateString(356, "View on BscScan")}
+        </ExternalLinkWrap>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default TicketCard
+export default TicketCard;

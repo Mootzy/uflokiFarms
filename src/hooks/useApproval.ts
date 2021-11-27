@@ -1,25 +1,25 @@
-import { useCallback, useState } from 'react'
-import { useLotteryApprove } from './useApprove'
+import { useCallback, useState } from "react";
+import { useLotteryApprove } from "./useApprove";
 
 export const useApproval = (onPresentApprove: () => void) => {
-  const [requestedApproval, setRequestedApproval] = useState(false)
-  const { onApprove } = useLotteryApprove()
+  const [requestedApproval, setRequestedApproval] = useState(false);
+  const { onApprove } = useLotteryApprove();
 
   const handleApprove = useCallback(async () => {
     try {
-      setRequestedApproval(true)
-      const txHash = await onApprove()
+      setRequestedApproval(true);
+      const txHash = await onApprove();
       // user rejected tx or didn't go thru
       if (!txHash) {
-        setRequestedApproval(false)
+        setRequestedApproval(false);
       }
-      onPresentApprove()
+      onPresentApprove();
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
-  }, [onApprove, onPresentApprove])
+  }, [onApprove, onPresentApprove]);
 
-  return { handleApprove, requestedApproval }
-}
+  return { handleApprove, requestedApproval };
+};
 
-export default useApproval
+export default useApproval;

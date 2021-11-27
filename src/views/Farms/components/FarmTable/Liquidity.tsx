@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { HelpIcon, Text } from '@pancakeswap-libs/uikit'
-import useI18n from 'hooks/useI18n'
+import React from "react";
+import styled from "styled-components";
+import { HelpIcon, Text } from "@pancakeswap-libs/uikit";
+import useI18n from "hooks/useI18n";
 
-import Tooltip from '../Tooltip/Tooltip'
+import Tooltip from "../Tooltip/Tooltip";
 
 export interface LiquidityProps {
-  liquidity: number
+  liquidity: number;
 }
 
 const LiquidityWrapper = styled.div`
@@ -17,7 +17,7 @@ const LiquidityWrapper = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     text-align: left;
   }
-`
+`;
 
 const Container = styled.div`
   display: flex;
@@ -32,24 +32,31 @@ const Container = styled.div`
       margin-left: 0;
     }
   }
-`
+`;
 
 const Liquidity: React.FunctionComponent<LiquidityProps> = ({ liquidity }) => {
   const displayLiquidity = liquidity
-    ? `$${Number(liquidity).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
-    : '-'
-  const TranslateString = useI18n()
+    ? `$${Number(liquidity).toLocaleString(undefined, {
+        maximumFractionDigits: 0,
+      })}`
+    : "-";
+  const TranslateString = useI18n();
 
   return (
     <Container>
       <LiquidityWrapper>
         <Text>{displayLiquidity}</Text>
       </LiquidityWrapper>
-      <Tooltip content={TranslateString(999, 'The total value of the funds in this farm’s liquidity pool')}>
+      <Tooltip
+        content={TranslateString(
+          999,
+          "The total value of the funds in this farm’s liquidity pool"
+        )}
+      >
         <HelpIcon color="textSubtle" />
       </Tooltip>
     </Container>
-  )
-}
+  );
+};
 
-export default Liquidity
+export default Liquidity;

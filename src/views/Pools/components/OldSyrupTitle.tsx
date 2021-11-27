@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import CardTitle from './CardTitle'
+import React from "react";
+import styled from "styled-components";
+import CardTitle from "./CardTitle";
 
 interface Props {
-  hasBalance?: boolean
+  hasBalance?: boolean;
 }
 
 const Title = styled.div`
@@ -11,12 +11,12 @@ const Title = styled.div`
   font-size: 24px;
   font-weight: 600;
   text-transform: uppercase;
-`
+`;
 
 const ActionLink = styled.a`
   color: #ed4b9e;
   font-size: 14px;
-`
+`;
 
 const OldSyrupTitle: React.FC<Props> = ({ hasBalance = false }) => {
   if (hasBalance) {
@@ -30,14 +30,14 @@ const OldSyrupTitle: React.FC<Props> = ({ hasBalance = false }) => {
           What do I need to do?
         </ActionLink>
       </div>
-    )
+    );
   }
 
   return (
     <div>
       <CardTitle isFinished>FINISHED</CardTitle>
     </div>
-  )
-}
+  );
+};
 
-export default OldSyrupTitle
+export default OldSyrupTitle;

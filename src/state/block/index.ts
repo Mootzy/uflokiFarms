@@ -1,17 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { Block } from '../types'
+import { createSlice } from "@reduxjs/toolkit";
+import { Block } from "../types";
 
-const initialState: Block = { blockNumber: 0 }
+const initialState: Block = { blockNumber: 0 };
 
 export const blockSlice = createSlice({
-  name: 'Block',
+  name: "Block",
   initialState,
   reducers: {
     setBlock: (_, action) => ({ blockNumber: action.payload }),
   },
-})
+});
 
 // Actions
-export const { setBlock } = blockSlice.actions
+export const { setBlock } = blockSlice.actions;
 
-export default blockSlice.reducer
+export default blockSlice.reducer;

@@ -1,12 +1,12 @@
-import React from 'react'
-import { ModalProvider } from '@pancakeswap-libs/uikit'
-import { Web3ReactProvider } from '@web3-react/core'
-import { Provider } from 'react-redux'
-import { getLibrary } from 'utils/web3React'
-import { LanguageContextProvider } from 'contexts/Localisation/languageContext'
-import { ThemeContextProvider } from 'contexts/ThemeContext'
-import { RefreshContextProvider } from 'contexts/RefreshContext'
-import store from 'state'
+import React from "react";
+import { ModalProvider } from "@pancakeswap-libs/uikit";
+import { Web3ReactProvider } from "@web3-react/core";
+import { Provider } from "react-redux";
+import { getLibrary } from "utils/web3React";
+import { LanguageContextProvider } from "contexts/Localisation/languageContext";
+import { ThemeContextProvider } from "contexts/ThemeContext";
+import { RefreshContextProvider } from "contexts/RefreshContext";
+import store from "state";
 
 const Providers: React.FC = ({ children }) => {
   return (
@@ -21,7 +21,7 @@ const Providers: React.FC = ({ children }) => {
         </ThemeContextProvider>
       </Provider>
     </Web3ReactProvider>
-  )
-}
+  );
+};
 
-export default Providers
+export default Providers;

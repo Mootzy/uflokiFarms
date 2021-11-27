@@ -1,22 +1,22 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import { useWeb3React } from '@web3-react/core'
-import Page from 'components/layout/Page'
-import PageLoader from 'components/PageLoader'
-import { useFetchAchievements, useProfile } from 'state/hooks'
-import ProfileCreation from './ProfileCreation'
-import Header from './components/Header'
-import TaskCenter from './TaskCenter'
-import PublicProfile from './PublicProfile'
+import React from "react";
+import { Route } from "react-router-dom";
+import { useWeb3React } from "@web3-react/core";
+import Page from "components/layout/Page";
+import PageLoader from "components/PageLoader";
+import { useFetchAchievements, useProfile } from "state/hooks";
+import ProfileCreation from "./ProfileCreation";
+import Header from "./components/Header";
+import TaskCenter from "./TaskCenter";
+import PublicProfile from "./PublicProfile";
 
 const Profile = () => {
-  const { isInitialized, isLoading, hasProfile } = useProfile()
-  const { account } = useWeb3React()
+  const { isInitialized, isLoading, hasProfile } = useProfile();
+  const { account } = useWeb3React();
 
-  useFetchAchievements()
+  useFetchAchievements();
 
   if (!isInitialized || isLoading) {
-    return <PageLoader />
+    return <PageLoader />;
   }
 
   if (account && !hasProfile) {
@@ -24,7 +24,7 @@ const Profile = () => {
       <Page>
         <ProfileCreation />
       </Page>
-    )
+    );
   }
 
   return (
@@ -37,7 +37,7 @@ const Profile = () => {
         <TaskCenter />
       </Route>
     </Page>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

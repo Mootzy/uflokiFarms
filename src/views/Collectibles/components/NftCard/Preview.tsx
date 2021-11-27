@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Nft } from 'config/constants/types'
+import React from "react";
+import styled from "styled-components";
+import { Nft } from "config/constants/types";
 
 interface PreviewProps {
-  nft: Nft
-  isOwned?: boolean
+  nft: Nft;
+  isOwned?: boolean;
 }
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
   width: 100%;
   overflow: hidden;
   padding-bottom: 100%;
-`
+`;
 
 const StyledImage = styled.img`
   position: absolute;
@@ -24,24 +24,30 @@ const StyledImage = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 32px 32px 0 0;
-`
+`;
 
 const StyledVideo = styled.video`
   height: 100%;
   width: 100%;
-`
+`;
 
 const Preview: React.FC<PreviewProps> = ({ nft, isOwned = false }) => {
-  const { images, name, video } = nft
-  const previewImageSrc = `/images/nfts/${images.lg}`
+  const { images, name, video } = nft;
+  const previewImageSrc = `/images/nfts/${images.lg}`;
 
   if (video) {
     const videoComponent = (
-      <StyledVideo autoPlay controls={false} loop muted poster={previewImageSrc}>
+      <StyledVideo
+        autoPlay
+        controls={false}
+        loop
+        muted
+        poster={previewImageSrc}
+      >
         <source src={video.webm} type="video/webm" />
         <source src={video.mp4} type="video/mp4" />
       </StyledVideo>
-    )
+    );
 
     return isOwned ? (
       <a href={images.ipfs} target="_blank" rel="noreferrer noopener">
@@ -49,10 +55,10 @@ const Preview: React.FC<PreviewProps> = ({ nft, isOwned = false }) => {
       </a>
     ) : (
       videoComponent
-    )
+    );
   }
 
-  const previewImage = <StyledImage src={previewImageSrc} alt={name} />
+  const previewImage = <StyledImage src={previewImageSrc} alt={name} />;
 
   return (
     <Container>
@@ -64,7 +70,7 @@ const Preview: React.FC<PreviewProps> = ({ nft, isOwned = false }) => {
         previewImage
       )}
     </Container>
-  )
-}
+  );
+};
 
-export default Preview
+export default Preview;

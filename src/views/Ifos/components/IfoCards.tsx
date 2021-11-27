@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 interface IfoCardWrapperProps {
-  isSingle?: boolean
+  isSingle?: boolean;
 }
 
 const IfoCardWrapper = styled.div<IfoCardWrapperProps>`
@@ -14,12 +14,13 @@ const IfoCardWrapper = styled.div<IfoCardWrapperProps>`
   padding-top: 40px;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: ${({ isSingle }) => `repeat(${isSingle ? 1 : 2}, 1fr)`};
+    grid-template-columns: ${({ isSingle }) =>
+      `repeat(${isSingle ? 1 : 2}, 1fr)`};
   }
-`
+`;
 
 IfoCardWrapper.defaultProps = {
   isSingle: false,
-}
+};
 
-export default IfoCardWrapper
+export default IfoCardWrapper;

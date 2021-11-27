@@ -1,110 +1,110 @@
 export type TableProps = {
-  data?: TableDataTypes[]
-  selectedFilters?: string
-  sortBy?: string
-  sortDir?: string
-  onSort?: (value: string) => void
-}
+  data?: TableDataTypes[];
+  selectedFilters?: string;
+  sortBy?: string;
+  sortDir?: string;
+  onSort?: (value: string) => void;
+};
 
 export type ColumnsDefTypes = {
-  id: number
-  label: string
-  name: string
-  translationId: number
-  sortable: boolean
-}
+  id: number;
+  label: string;
+  name: string;
+  translationId: number;
+  sortable: boolean;
+};
 
 export type ScrollBarProps = {
-  ref: string
-  width: number
-}
+  ref: string;
+  width: number;
+};
 
 export type TableDataTypes = {
-  POOL: string
-  APY: string
-  EARNED: string
-  STAKED: string
-  DETAILS: string
-  LINKS: string
-}
+  POOL: string;
+  APY: string;
+  EARNED: string;
+  STAKED: string;
+  DETAILS: string;
+  LINKS: string;
+};
 
 export const MobileColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
-    name: 'farm',
+    name: "farm",
     translationId: 999,
     sortable: true,
-    label: '',
+    label: "",
   },
   {
     id: 2,
-    name: 'earned',
+    name: "earned",
     translationId: 1072,
     sortable: true,
-    label: 'Earned',
+    label: "Earned",
   },
   {
     id: 3,
-    name: 'apr',
+    name: "apr",
     translationId: 736,
     sortable: true,
-    label: 'APR',
+    label: "APR",
   },
   {
     id: 6,
-    name: 'details',
+    name: "details",
     translationId: 999,
     sortable: true,
-    label: '',
+    label: "",
   },
-]
+];
 
 export const DesktopColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
-    name: 'farm',
+    name: "farm",
     translationId: 999,
     sortable: true,
-    label: '',
+    label: "",
   },
   {
     id: 2,
-    name: 'earned',
+    name: "earned",
     translationId: 1072,
     sortable: true,
-    label: 'Earned',
+    label: "Earned",
   },
   {
     id: 3,
-    name: 'apr',
+    name: "apr",
     translationId: 736,
     sortable: true,
-    label: 'APR',
+    label: "APR",
   },
   {
     id: 4,
-    name: 'liquidity',
+    name: "liquidity",
     translationId: 999,
     sortable: true,
-    label: 'Liquidity',
+    label: "Liquidity",
   },
   {
     id: 5,
-    name: 'multiplier',
+    name: "multiplier",
     translationId: 999,
     sortable: true,
-    label: 'Multiplier',
+    label: "Multiplier",
   },
   {
     id: 6,
-    name: 'details',
+    name: "details",
     translationId: 999,
     sortable: true,
-    label: '',
+    label: "",
   },
-]
+];
 
 export enum ViewMode {
-  'TABLE' = 'TABLE',
-  'CARD' = 'CARD',
+  "TABLE" = "TABLE",
+  "CARD" = "CARD",
 }

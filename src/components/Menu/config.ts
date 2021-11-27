@@ -1,34 +1,34 @@
-import { MenuEntry } from '@pancakeswap-libs/uikit'
+import { MenuEntry } from "@pancakeswap-libs/uikit";
 
 const config: MenuEntry[] = [
   {
-    label: 'Home',
-    icon: 'HomeIcon',
-    href: 'https://www.universalfloki.com',
+    label: "Home",
+    icon: "HomeIcon",
+    href: "https://www.universalfloki.com",
   },
   {
-    label: 'Trade',
-    icon: 'TradeIcon',
+    label: "Trade",
+    icon: "TradeIcon",
     items: [
       {
-        label: 'Exchange',
-        href: 'https://dex.universalfloki.com/',
+        label: "Exchange",
+        href: "https://dex.universalfloki.com/",
       },
       {
-        label: 'Liquidity',
-        href: 'https://dex.universalfloki.com/#/pool',
+        label: "Liquidity",
+        href: "https://dex.universalfloki.com/#/pool",
       },
     ],
   },
   {
-    label: 'Farms',
-    icon: 'FarmIcon',
-    href: '/farms',
+    label: "Farms",
+    icon: "FarmIcon",
+    href: "/farms",
   },
   {
-    label: 'Pools',
-    icon: 'PoolIcon',
-    href: '/pools',
+    label: "Pools",
+    icon: "PoolIcon",
+    href: "/pools",
   },
   // {
   //   label: 'Lottery',
@@ -109,50 +109,49 @@ const config: MenuEntry[] = [
   //   ],
   // },
 ];
-  export const footerLinks: any = {
-    'column1': [
-      {
-        label: 'Website',
-        href: 'https://www.universalfloki.com',
-      },
-      {
-        label: 'Doc',
-        href: 'https://www.universalfloki.com',
-      },
-      {
-        label: 'Token',
-        href: 'https://universalfloki.com',
-      },
-    ],
-    'column2': [
-      {
-        label: 'Telegram',
-        href: 'https://pancakeswap.info',
-      },
-      {
-        label: 'Twitter',
-        href: 'https://pancakeswap.info',
-      },
-      {
-        label: 'Instagram',
-        href: 'https://pancakeswap.info',
-      },
-    ],
-    // 'column3': [
-    //   {
-    //     label: 'Link 1',
-    //     href: 'https://pancakeswap.info',
-    //   },
-    //   {
-    //     label: 'Link 2',
-    //     href: 'https://pancakeswap.info',
-    //   },
-    //   {
-    //     label: 'Link 2',
-    //     href: 'https://pancakeswap.info',
-    //   },
-    // ]
-  };
+export const footerLinks: any = {
+  column1: [
+    {
+      label: "Website",
+      href: "https://www.universalfloki.com",
+    },
+    {
+      label: "Doc",
+      href: "https://www.universalfloki.com",
+    },
+    {
+      label: "Token",
+      href: "https://universalfloki.com",
+    },
+  ],
+  column2: [
+    {
+      label: "Telegram",
+      href: "https://pancakeswap.info",
+    },
+    {
+      label: "Twitter",
+      href: "https://pancakeswap.info",
+    },
+    {
+      label: "Instagram",
+      href: "https://pancakeswap.info",
+    },
+  ],
+  // 'column3': [
+  //   {
+  //     label: 'Link 1',
+  //     href: 'https://pancakeswap.info',
+  //   },
+  //   {
+  //     label: 'Link 2',
+  //     href: 'https://pancakeswap.info',
+  //   },
+  //   {
+  //     label: 'Link 2',
+  //     href: 'https://pancakeswap.info',
+  //   },
+  // ]
+};
 
-
-export default config
+export default config;

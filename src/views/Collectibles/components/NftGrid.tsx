@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const NftGrid = styled.div`
   display: grid;
@@ -14,6 +14,6 @@ const NftGrid = styled.div`
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-columns: repeat(3, 1fr);
   }
-`
+`;
 
-export default NftGrid
+export default NftGrid;

@@ -1,11 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useModal } from '@pancakeswap-libs/uikit'
-import EditProfileModal from './EditProfileModal'
-import ProfileAvatar, { ProfileAvatarProps } from './ProfileAvatar'
+import React from "react";
+import styled from "styled-components";
+import { useModal } from "@pancakeswap-libs/uikit";
+import EditProfileModal from "./EditProfileModal";
+import ProfileAvatar, { ProfileAvatarProps } from "./ProfileAvatar";
 
 const EditOverlay = styled.div`
-  background: rgba(0, 0, 0, 0.6) url('/images/camera.svg') no-repeat center center;
+  background: rgba(0, 0, 0, 0.6) url("/images/camera.svg") no-repeat center
+    center;
   background-size: 24px;
   border-radius: 50%;
   left: 0;
@@ -20,7 +21,7 @@ const EditOverlay = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     background-size: 48px;
   }
-`
+`;
 
 const StyledEditProfileAvatar = styled.div`
   position: relative;
@@ -32,17 +33,17 @@ const StyledEditProfileAvatar = styled.div`
       opacity: 1;
     }
   }
-`
+`;
 
 const EditProfileAvatar: React.FC<ProfileAvatarProps> = ({ profile }) => {
-  const [onEditProfileModal] = useModal(<EditProfileModal />, false)
+  const [onEditProfileModal] = useModal(<EditProfileModal />, false);
 
   return (
     <StyledEditProfileAvatar onClick={onEditProfileModal}>
       <ProfileAvatar profile={profile} />
       <EditOverlay />
     </StyledEditProfileAvatar>
-  )
-}
+  );
+};
 
-export default EditProfileAvatar
+export default EditProfileAvatar;

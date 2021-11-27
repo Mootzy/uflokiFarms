@@ -1,12 +1,12 @@
-import React, { ButtonHTMLAttributes } from 'react'
-import styled from 'styled-components'
-import { Button, Text } from '@pancakeswap-libs/uikit'
+import React, { ButtonHTMLAttributes } from "react";
+import styled from "styled-components";
+import { Button, Text } from "@pancakeswap-libs/uikit";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  value: string
-  label?: string
-  buttonLabel: string
-  disabled?: boolean
+  value: string;
+  label?: string;
+  buttonLabel: string;
+  disabled?: boolean;
 }
 
 const ButtonWrapper = styled.div`
@@ -17,9 +17,15 @@ const ButtonWrapper = styled.div`
   border-radius: ${({ theme }) => theme.radii.default};
   border-color: ${({ theme }) => theme.colors.borderColor};
   padding-left: 16px;
-`
+`;
 
-const LabelButton: React.FC<Props> = ({ value, label, buttonLabel, onClick, disabled = false }) => {
+const LabelButton: React.FC<Props> = ({
+  value,
+  label,
+  buttonLabel,
+  onClick,
+  disabled = false,
+}) => {
   return (
     <div>
       {label && (
@@ -36,7 +42,7 @@ const LabelButton: React.FC<Props> = ({ value, label, buttonLabel, onClick, disa
         </Button>
       </ButtonWrapper>
     </div>
-  )
-}
+  );
+};
 
-export default LabelButton
+export default LabelButton;

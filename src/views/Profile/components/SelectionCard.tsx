@@ -1,29 +1,29 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Card, Radio } from '@pancakeswap-libs/uikit'
+import React from "react";
+import styled from "styled-components";
+import { Card, Radio } from "@pancakeswap-libs/uikit";
 
 interface SelectionCardProps {
-  name: string
-  value: string | number
-  isChecked?: boolean
-  onChange: (val: any) => void
-  image: string
-  disabled?: boolean
+  name: string;
+  value: string | number;
+  isChecked?: boolean;
+  onChange: (val: any) => void;
+  image: string;
+  disabled?: boolean;
 }
 
 const StyledCard = styled(Card)`
-  ${({ isSuccess }) => !isSuccess && 'box-shadow: none;'}
+  ${({ isSuccess }) => !isSuccess && "box-shadow: none;"}
   border-radius: 16px;
   margin-bottom: 16px;
-`
+`;
 
 const Label = styled.label<{ isDisabled: boolean }>`
-  cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  opacity: ${({ isDisabled }) => (isDisabled ? '0.6' : '1')};
-`
+  opacity: ${({ isDisabled }) => (isDisabled ? "0.6" : "1")};
+`;
 
 const Body = styled.div`
   align-items: center;
@@ -33,21 +33,21 @@ const Body = styled.div`
   flex-grow: 1;
   height: 80px;
   padding: 8px 16px;
-`
+`;
 
 const Children = styled.div`
   margin-left: 16px;
-`
+`;
 
 const StyledBackgroundImage = styled.div<{ src: string }>`
   align-self: stretch;
-  background-image: url('${({ src }) => src}');
+  background-image: url("${({ src }) => src}");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   flex: none;
   width: 80px;
-`
+`;
 
 const SelectionCard: React.FC<SelectionCardProps> = ({
   name,
@@ -60,7 +60,12 @@ const SelectionCard: React.FC<SelectionCardProps> = ({
   ...props
 }) => {
   return (
-    <StyledCard isSuccess={isChecked} isDisabled={disabled} mb="16px" {...props}>
+    <StyledCard
+      isSuccess={isChecked}
+      isDisabled={disabled}
+      mb="16px"
+      {...props}
+    >
       <Label isDisabled={disabled}>
         <Body>
           <Radio
@@ -69,14 +74,14 @@ const SelectionCard: React.FC<SelectionCardProps> = ({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             disabled={disabled}
-            style={{ flex: 'none' }}
+            style={{ flex: "none" }}
           />
           <Children>{children}</Children>
         </Body>
         <StyledBackgroundImage src={image} />
       </Label>
     </StyledCard>
-  )
-}
+  );
+};
 
-export default SelectionCard
+export default SelectionCard;

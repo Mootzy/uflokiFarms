@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Flex, Heading, Text } from '@pancakeswap-libs/uikit'
+import React from "react";
+import styled from "styled-components";
+import { Flex, Heading, Text } from "@pancakeswap-libs/uikit";
 
 interface HeadingProps {
-  valueToDisplay?: string
-  children?: string
-  Icon?: React.ComponentType
+  valueToDisplay?: string;
+  children?: string;
+  Icon?: React.ComponentType;
 }
 
 const IconWrapper = styled.div`
@@ -14,9 +14,14 @@ const IconWrapper = styled.div`
     width: 48px;
     height: 48px;
   }
-`
+`;
 
-const LotteryCardHeading: React.FC<HeadingProps> = ({ valueToDisplay, children, Icon, ...props }) => {
+const LotteryCardHeading: React.FC<HeadingProps> = ({
+  valueToDisplay,
+  children,
+  Icon,
+  ...props
+}) => {
   return (
     <Flex {...props}>
       {Icon && (
@@ -31,13 +36,13 @@ const LotteryCardHeading: React.FC<HeadingProps> = ({ valueToDisplay, children, 
         <Heading size="lg">{valueToDisplay}</Heading>
       </Flex>
     </Flex>
-  )
-}
+  );
+};
 
 LotteryCardHeading.defaultProps = {
-  valueToDisplay: '',
+  valueToDisplay: "",
   Icon: () => <div />,
-  children: '',
-}
+  children: "",
+};
 
-export default LotteryCardHeading
+export default LotteryCardHeading;

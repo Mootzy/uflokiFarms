@@ -1,18 +1,18 @@
-import React from 'react'
-import { CardBody, Heading, Text } from '@pancakeswap-libs/uikit'
-import styled from 'styled-components'
-import { getBalanceNumber } from 'utils/formatBalance'
-import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
-import useI18n from 'hooks/useI18n'
-import { getCakeAddress } from 'utils/addressHelpers'
-import CardValue from './CardValue'
-import RainbowCardBacklight from '../../../components/RainbowCardBacklight/RainbowCardBacklight'
-import { RainbowCard } from '../../../components/Card'
+import React from "react";
+import { CardBody, Heading, Text } from "@pancakeswap-libs/uikit";
+import styled from "styled-components";
+import { getBalanceNumber } from "utils/formatBalance";
+import { useTotalSupply, useBurnedBalance } from "hooks/useTokenBalance";
+import useI18n from "hooks/useI18n";
+import { getCakeAddress } from "utils/addressHelpers";
+import CardValue from "./CardValue";
+import RainbowCardBacklight from "../../../components/RainbowCardBacklight/RainbowCardBacklight";
+import { RainbowCard } from "../../../components/Card";
 
 const StyledCakeStats = styled(RainbowCard)`
   margin-left: auto;
   margin-right: auto;
-`
+`;
 
 const Row = styled.div`
   align-items: center;
@@ -20,36 +20,44 @@ const Row = styled.div`
   font-size: 14px;
   justify-content: space-between;
   margin-bottom: 8px;
-`
+`;
 
 const CakeStats = () => {
-  const TranslateString = useI18n()
-  const totalSupply = useTotalSupply()
-  const burnedBalance = getBalanceNumber(useBurnedBalance(getCakeAddress()))
-  const cakeSupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
+  const TranslateString = useI18n();
+  const totalSupply = useTotalSupply();
+  const burnedBalance = getBalanceNumber(useBurnedBalance(getCakeAddress()));
+  const cakeSupply = totalSupply
+    ? getBalanceNumber(totalSupply) - burnedBalance
+    : 0;
 
   return (
     <StyledCakeStats>
       <RainbowCardBacklight />
       <CardBody>
         <Heading size="xl" mb="24px">
-          {TranslateString(534, 'Litter Stats')}
+          {TranslateString(534, "Litter Stats")}
         </Heading>
         <Row>
-          <Text fontSize="14px">{TranslateString(536, 'Total Litter Supply')}</Text>
+          <Text fontSize="14px">
+            {TranslateString(536, "Total Litter Supply")}
+          </Text>
           {cakeSupply && <CardValue fontSize="14px" value={cakeSupply} />}
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(538, 'Total Litter Burned')}</Text>
+          <Text fontSize="14px">
+            {TranslateString(538, "Total Litter Burned")}
+          </Text>
           <CardValue fontSize="14px" decimals={0} value={burnedBalance} />
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(540, 'New Litter/block')}</Text>
+          <Text fontSize="14px">
+            {TranslateString(540, "New Litter/block")}
+          </Text>
           <CardValue fontSize="14px" decimals={0} value={25} />
         </Row>
       </CardBody>
     </StyledCakeStats>
-  )
-}
+  );
+};
 
-export default CakeStats
+export default CakeStats;

@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ChevronDownIcon, Text } from '@pancakeswap-libs/uikit'
+import React from "react";
+import styled from "styled-components";
+import { ChevronDownIcon, Text } from "@pancakeswap-libs/uikit";
 
 export interface DetailsButtonProps {
-  onClick?: () => void
+  onClick?: () => void;
 }
 
 const Wrapper = styled.div`
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   svg {
     fill: ${({ theme }) => theme.colors.primary};
   }
-`
+`;
 
 const DetailsButton: React.FC<DetailsButtonProps> = ({ onClick }) => {
   return (
@@ -28,7 +28,7 @@ const DetailsButton: React.FC<DetailsButtonProps> = ({ onClick }) => {
       </Text>
       <ChevronDownIcon />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default DetailsButton
+export default DetailsButton;
